@@ -1,0 +1,34 @@
+Usage: git config –global user.name “[name]”  
+Usage: git config –global user.email “[email address]”  
+
+Usage: git init [repository name]
+
+Usage: git clone [url]  
+
+Usage: git status  
+
+Usage: git add *  
+
+Usage: git commit -m “[ Type in the commit message]”  
+
+Usage: git commit -a  
+
+Usage: git diff  
+
+This command shows the file differences which are not yet staged.
+
+Usage: git remote add [variable name] [Remote Server Link]  
+
+Usage: git push [variable name] master  
+
+Usage: git pull [Repository Link]  
+
+
+
+Ark pvp: 
+
+r.nanite.viewmeshLODBias.Offset 1000
+
+r.materialquality 0
+wp.Runtime.UpdateStreamingSources 0
+wp.Runtime.HLOD 0
