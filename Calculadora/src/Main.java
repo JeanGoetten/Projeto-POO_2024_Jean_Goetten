@@ -1,15 +1,9 @@
 import java.util.Scanner;
 public class Main {
-    public static float Sum(float A, float B){
-        return A + B;
-    }
+    public static float Sum(float A, float B) { return A + B; }
     public static float Subtract(float A, float B) { return A - B; }
-    public static float Multiplication(float A, float B){
-        return A * B;
-    }
-    public static float Division(float A, float B){
-        return A / B;
-    }
+    public static float Multiplication(float A, float B){ return A * B; }
+    public static float Division(float A, float B){ return A / B; }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("calculator - enter x to exit");
@@ -39,6 +33,5 @@ public class Main {
         }else{
             System.exit(0);
         }
-
     }
 }
