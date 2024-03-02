@@ -20,57 +20,68 @@ import java.util.List;
 import java.util.Random;
 
 public class Main {
+    //Variáveis
     static List<String> poolPlayersName = new ArrayList<>();
     static int maxPlayers = 5;
     static int totalScorePlayer = 0;
-    int[][] scorePlayerPerLevel = new int[5][3];
+    static int[][] scorePlayerPerLevel = new int[5][3];
     static int[] maxScorePerLevel = {5, 15, 30};
     static int maxLevel = 3;
     static int level = 0;
-
+    //Funções
     public static boolean AddNewPlayer(String name){
-        //adiciona novo jogador
+        //adiciona novo jogador se ainda não existente
+        boolean alreadyExist = false;
         if(poolPlayersName.size() < maxPlayers){
-            //verificar se nome de personagem já existe
-            //Adicionar
-            poolPlayersName.add(name);
-            return true;
+            for(int i = 0; i < poolPlayersName.size(); i++){ //verificar se nome de personagem já existe
+                if(poolPlayersName.get(i).equals(name)){
+                    alreadyExist = true;
+                }else{
+                    alreadyExist = false;
+                }
+            }
+            if(!alreadyExist){
+                poolPlayersName.add(name);
+                return true;
+            }else{
+                System.out.println("Nome já utilizado. Tente outro. ");
+                return false;
+            }
         }else{
             System.out.println("As inscrições para essa aventura se esgotaram. Lamentamos!");
             return false;
         }
     }
     public static void AddMoreScore(String playerName ){
-        // adiciona mais pontuação pelo nível
+        // adiciona a pontuação do nível
     }
-
     public static void NewGame(){
+        level = 0;
         Scanner scan = new Scanner(System.in);
         System.out.println("Crie um nome de personagem: ");
         String playerName = scan.nextLine();
 
-        AddNewPlayer(playerName);
+        if(AddNewPlayer(playerName)){
+            while (level < maxLevel){
+                System.out.println(playerName + ", prima Enter para ir para a aventura " + (level + 1));
+                scan.nextLine();
 
-        while (level < maxLevel){
-            System.out.println(playerName + ", prima Enter para ir para a aventura " + (level + 1));
-            scan.nextLine();
-
-            Play(playerName);
+                Play(playerName);
+            }
         }
     }
-
     public static void Play(String playerName){
         // sorteia aleatoriamente um valor de score
         Random rand = new Random();
         int rNumber = rand.nextInt(maxScorePerLevel[level] + 1);
-        // se o valor do score for igual a 0, a aventura falhou e o jogador a repetirá
-        if(rNumber == 0){
+        if(rNumber == 0){ // se o valor do score for igual a 0, a aventura falhou e o jogador a repetirá
             System.out.println("Você obteve " + rNumber + " pontos e sua aventura falhou! Por favor tente novamente!");
             // repetir play
-        }else if(rNumber == maxScorePerLevel[level]){
+        }else if(rNumber == maxScorePerLevel[level]){ // se o score for máximo, o jogador passa direto de nível
             System.out.println("Você obteve " + rNumber + " pontos e sua aventura foi perfeita! Preparando próximo nível!");
             level++;
             totalScorePlayer += rNumber; //incrementar score
+            scorePlayerPerLevel[FindPlayerIndex(playerName)][level - 1] = rNumber; //registra os pontos na coluna player e linha level
         }else{
             Scanner scan = new Scanner(System.in);
             System.out.println("Você obteve " + rNumber + " pontos de " + maxScorePerLevel[level] + " nessa aventura. Manter pontuação e continuar (1); Refazer aventura (2)");
@@ -79,6 +90,7 @@ public class Main {
                 case 1:
                     level++;
                     totalScorePlayer += rNumber; //incrementar score
+                    scorePlayerPerLevel[FindPlayerIndex(playerName)][level - 1] = rNumber; //registra os pontos na coluna player e linha level
                     break;
                 case 2:
                     // repetir play
@@ -89,36 +101,32 @@ public class Main {
 
         }
     }
-
     public static void Continue(String playerName){
         //Pega o nome de jogador para verificar até que fase foi ou se quer repetir alguma fase
     }
-
     public static void Scores(){
         //Mostra a tabela de scores
     }
-
-    public static void main(String[] args) {
-        System.out.println("SUPER MARIOISH LINHA DE COMANDO ADVENTURE");
+    public static void Menu(){
         Scanner scan = new Scanner(System.in);
 
         boolean playing = true;
 
         while(playing){
             System.out.println("1 - New Game; 2 - Continue; 3 - Scoreboard; 4 - Sair");
-            int opt = scan.nextInt();
+            String opt = scan.next();
 
             //Menu
             switch (opt){
-                case 1:
+                case "1":
                     NewGame();
                     break;
-                case 2:
+                case "2":
                     System.out.println("Insira seu nome de jogador: ");
                     String playerName = scan.nextLine();
                     Continue(playerName);
                     break;
-                case 3:
+                case "3":
                     Scores();
                     break;
                 default:
@@ -126,5 +134,19 @@ public class Main {
                     //System.exit(0);
             }
         }
+    }
+    public static int FindPlayerIndex(String playerName){
+        int playerIndex = 0;
+        for(int i = 0; i < poolPlayersName.size(); i++){
+            if(playerName.equals(poolPlayersName.get(i))){
+                playerIndex = i;
+            }
+        }
+        return playerIndex;
+    }
+    //Main
+    public static void main(String[] args) {
+        System.out.println("SUPER MARIOISH LINHA DE COMANDO ADVENTURE");
+        Menu();
     }
 }
