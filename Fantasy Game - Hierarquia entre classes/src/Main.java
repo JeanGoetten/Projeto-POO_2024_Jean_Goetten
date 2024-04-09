@@ -54,5 +54,5 @@ public class Main {
     Armor armor1 = new Armor("Shield", 100);
     Potion potion1 = new Potion("Mana", 10);
 
-    mage1.usePotion(potion1);
+
 }

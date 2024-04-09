@@ -1,12 +1,8 @@
 package Characters;
 
-import Items.Potion;
-import Items.Armor;
-
 public class Character {
     private String name;
     private float life;
-
     private float attackPower;
 
     public Character(String name) {
@@ -33,11 +29,5 @@ public class Character {
 
     public void setAttackPower(float attackPower) { this.attackPower = attackPower; }
 
-    public void usePotion(Potion potion){
-        potion.useItem();
-
-    }
-    public void useArmor(Armor armor){
-        armor.useItem();
-    }
+    public void useItem(int value){}
 }

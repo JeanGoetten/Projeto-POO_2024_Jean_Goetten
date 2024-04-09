@@ -8,10 +8,18 @@ public class Potion extends Item{
     }
 
     public float getMana() {
-        return mana;
+        return this.mana;
     }
 
     public void setMana(float mana) {
         this.mana = mana;
+    }
+
+    @Override
+    public void setQtd(int qtd) {
+        super.setQtd(qtd);
+    }
+    public void useItem(int value){
+        setQtd(value);
     }
 }

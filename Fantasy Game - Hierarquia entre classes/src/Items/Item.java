@@ -25,7 +25,7 @@ public class Item {
         this.qtd = qtd;
     }
 
-    public void useItem(){
-        qtd--;
+    public void useItem(int qtd){
+        this.qtd -= qtd;
     }
 }

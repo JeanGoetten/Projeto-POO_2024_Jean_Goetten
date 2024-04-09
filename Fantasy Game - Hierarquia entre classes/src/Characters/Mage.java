@@ -1,7 +1,10 @@
 package Characters;
+import Items.Potion;
 
 public class Mage extends Character{
     private float mana;
+    Potion potion = new Potion("Mana", 10);
+
     public Mage(String name) {
         super(name);
     }
@@ -19,4 +22,8 @@ public class Mage extends Character{
         mana--;
     }
 
+    @Override
+    public void useItem(int value){
+        potion.useItem(value);
+    }
 }
