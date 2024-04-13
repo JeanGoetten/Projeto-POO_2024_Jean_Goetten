@@ -38,21 +38,39 @@ import Terrains.Montains;
 import Terrains.Wood;
 
 public class Main {
-    Warrior warrior1 =  new Warrior("James");
-    Archer archer1 = new Archer("John");
-    Mage mage1 = new Mage("Jean");
-    Rogue rogue1 = new Rogue("Luisa");
-    Warlock warlock1 = new Warlock("Merlin");
-    Dragon dragon1 = new Dragon("Alextraza");
-    Unicorn unicorn1 = new Unicorn("Laura");
-    Griffon griffon1 = new Griffon("Flyion");
+    public static void main(String[] args) {
 
-    Desert desert1 = new Desert("Orion");
-    Wood wood1 = new Wood("Amazônia");
-    Montains montains1 = new Montains("Everest");
+        Warrior warrior1 = new Warrior("James");
+        Archer archer1 = new Archer("John");
+        Mage mage1 = new Mage("Jean");
+        Rogue rogue1 = new Rogue("Luisa");
+        Warlock warlock1 = new Warlock("Merlin");
+        Dragon dragon1 = new Dragon("Alextraza");
+        Unicorn unicorn1 = new Unicorn("Laura");
+        Griffon griffon1 = new Griffon("Flyion");
 
-    Armor armor1 = new Armor("Shield", 100);
-    Potion potion1 = new Potion("Mana", 10);
+        Desert desert1 = new Desert("Orion");
+        Wood wood1 = new Wood("Amazônia");
+        Montains montains1 = new Montains("Everest");
+
+        Armor armor1 = new Armor("Shield", 100);
+        Potion potion1 = new Potion("Mana", 10);
+
+        System.out.println("Você encontrou " + armor1.getName() + " de " + armor1.getQtd());
+        warrior1.useItem(armor1);
+
+        System.out.println("Você encontrou " + potion1.getName() + " de " + potion1.getQtd());
+        mage1.useItem(potion1);
+
+        System.out.println("Um dragão surgiu e preparou um ataque!");
+
+        warrior1.useShild(10);
+        mage1.fireball(3);
+
+        System.out.println("O warrior defendeu e o mago atacou!");
+        System.out.println("Warrior armor: " + warrior1.getArmor());
+        System.out.println("Mage mana: " + mage1.getMana());
 
 
+    }
 }

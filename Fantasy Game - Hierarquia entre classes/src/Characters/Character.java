@@ -28,6 +28,4 @@ public class Character {
     public float getAttackPower() { return attackPower; }
 
     public void setAttackPower(float attackPower) { this.attackPower = attackPower; }
-
-    public void useItem(int value){}
 }

@@ -1,9 +1,9 @@
 package Characters;
+import Items.Armor;
 import Items.Potion;
 
 public class Mage extends Character{
     private float mana;
-    Potion potion = new Potion("Mana", 10);
 
     public Mage(String name) {
         super(name);
@@ -15,15 +15,21 @@ public class Mage extends Character{
         this.mana = mana;
     }
 
-    public void addMana(){
-        mana++;
+    public void addMana(int value){
+        mana += value;
     }
-    public void subMana(){
-        mana--;
+    public void subMana(int qtd){
+        mana -= qtd;
     }
 
-    @Override
-    public void useItem(int value){
-        potion.useItem(value);
+    public void fireball(int qtd){
+        subMana(qtd);
+    }
+
+    public void useItem(Potion potion){
+        System.out.println("Mage mana: " + getMana());
+        addMana(potion.getQtd());
+        potion.useItem(potion.getQtd());
+        System.out.println("Mage mana: " + getMana());
     }
 }
