@@ -28,10 +28,24 @@
 //acréscimo de 5. Exiba o resultado na tela.
 
 
+import Roupas.Calca;
+import Roupas.Camisa;
+import Roupas.Vestido;
+
 public class Main {
     public static void main(String[] args) {
 
+        Camisa camisaRegata = new Camisa(30, "preta");
+        Calca calcaJeans = new Calca(42, "azul");
+        Vestido vestidoFlorido = new Vestido(20, "amarelo");
 
+        camisaRegata.setPreco(150);
+        calcaJeans.setPreco(300);
+        vestidoFlorido.setPreco(600);
+
+        System.out.println("Preço original regata: " + camisaRegata.getPreco() + " - Com desconto de " + camisaRegata.getDesconto() + "% e 5% de acréscimo. Preço final: " + camisaRegata.calcularPrecoFinal(5));
+        System.out.println("Preço original calça: " + calcaJeans.getPreco() + " - Com desconto de " + calcaJeans.getDesconto() + "% e 5% de acréscimo. Preço final: " + calcaJeans.calcularPrecoFinal(5));
+        System.out.println("Preço original vestido: " + vestidoFlorido.getPreco() + " - Com desconto de " + vestidoFlorido.getDesconto() + "% e 5% de acréscimo. Preço final: " + vestidoFlorido.calcularPrecoFinal(5));
 
     }
 }
